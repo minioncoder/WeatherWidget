@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp">
+
+  <head>
+    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+    <script src="https://code.angularjs.org/1.4.8/angular.js"></script>
+    <link rel="stylesheet" href="weather.css" />
+    <script src="weather.js"></script>
+  </head>
+
+  <body ng-controller="weatherCtrl" class="inner">
+    <div class="container">
+      <div class="cityname">
+      	{{ place.location.city}}, {{place.location.region}}
+      </div>
+      <div class="temp">
+      	<span>{{ place.item.condition.temp }}&deg; </span>
+      	<div class="item">
+      	 <img src="http://l.yimg.com/a/i/us/we/52/{{place.item.condition.code}}.gif" />
+         <span class="caption">{{ place.item.condition.text }} </span>
+        </div>
+      </div>
+      <div>
+      		<ul>
+                <li ng-repeat="forecast in place.item.forecast">
+                  <span>
+                    {{ forecast.day }} <br/>
+                    {{forecast.high }}&deg;/ {{ forecast.low }}&deg;
+                  </span>
+                </li>
+            </ul>
+      </div>
+    </div>
+  </body>
+</html>
